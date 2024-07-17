@@ -1,30 +1,29 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: poc-helloworld
+  name: node-poc
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: poc-helloworld
+      app: node-poc
   template:
     metadata:
       labels:
-        app: poc-helloworld
+        app: node-poc
     spec:
       containers:
-      - name: poc-helloworld
-        image: poc-helloworld:latest
-      imagePullSecrets:
-      - name: nexus-secret
+      - name: node-poc
+        image: localhost:8082/node-poc-image:latest
+
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: poc-helloworld
+  name: node-poc
 spec:
   selector:
-    app: poc-helloworld
+    app: node-poc
   ports:
   - protocol: TCP
     port: 80
