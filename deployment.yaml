@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: poc-helloworld
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: poc-helloworld
+  template:
+    metadata:
+      labels:
+        app: poc-helloworld
+    spec:
+      containers:
+      - name: poc-helloworld
+        image: poc-helloworld:latest
+      imagePullSecrets:
+      - name: nexus-secret
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: poc-helloworld
+spec:
+  selector:
+    app: poc-helloworld
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 5000
+  type: LoadBalancer
