@@ -15,8 +15,10 @@ spec:
       containers:
       - name: node-poc
         image: localhost:8082/node-poc-image:latest
+        imagePullPolicy: Never
 
 ---
+
 apiVersion: v1
 kind: Service
 metadata:

@@ -14,6 +14,11 @@ node {
         echo "Build Successful......"
     }
 
+    stage('Build Docker image') {
+        bat 'minikube cache add node-poc-image:latest'
+        echo "Image successfully added to minikube cache...."
+    }
+
     stage('Push Docker image to Nexus') {
         docker.withRegistry("http://${DOCKER_REGISTRY}", "${NEXUS_CREDENTIALS}") {
             docker.image("${DOCKER_IMAGE}:latest").push()
@@ -25,6 +30,7 @@ node {
         withEnv(["KUBECONFIG=${KUBE_CONFIG_PATH}"]) {
             bat "kubectl version"
             bat "kubectl apply -f deployment.yaml"
+            bat "kubectl get pods"
         }
         echo "Deployment Successful....."
     }
