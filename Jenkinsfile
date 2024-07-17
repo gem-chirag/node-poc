@@ -1,6 +1,6 @@
 node {
     def DOCKER_IMAGE = "node-poc-image"
-    def DOCKER_REGISTRY = "localhost:8081/repository/node-poc/"
+    def DOCKER_REGISTRY = "localhost:8082/repository/node-poc/"
     def NEXUS_CREDENTIALS = 'nexus-cred'
     def GIT_REPO = 'https://github.com/gem-chirag/node-poc.git'
     def KUBE_CONFIG_PATH = "C:\\Users\\Chirag.Thakur\\.kube\\config"
