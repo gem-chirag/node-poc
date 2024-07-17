@@ -3,7 +3,7 @@ node {
     def DOCKER_REGISTRY = "localhost:8081/repository/node-poc/"
     def NEXUS_CREDENTIALS = 'nexus-cred'
     def GIT_REPO = 'https://github.com/gem-chirag/node-poc.git'
-    def KUBE_CONFIG_PATH = "C:\\Users\\Chirag\\.kube\\config"
+    def KUBE_CONFIG_PATH = "C:\\Users\\Chirag.Thakur\\.kube\\config"
 
     stage('Clone repository') {
         checkout([$class: 'GitSCM', branches: [[name: '*/main']], userRemoteConfigs: [[url: GIT_REPO]]])
